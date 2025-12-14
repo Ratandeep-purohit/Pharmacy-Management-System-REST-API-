@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_jwt_extended import jwt_required
-from project.app.bl.ProductBLC import ProductBLC
+from project.app.bl.productblc import ProductBLC
 from http import HTTPStatus
 from project.app.db import db
 from project.app.decorators import admin_required
@@ -29,7 +29,7 @@ def add_product(args):
 @bp.route('/api/product', methods=['GET'])
 # @jwt_required()
 # @admin_required
-@use_args(ProductSearchSchema(), location='json')
+@use_args(ProductSearchSchema(), location='query')
 def get_products(args):
     """
     Get all products or a single product by ID.
